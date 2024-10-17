@@ -1,0 +1,15 @@
+form {
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    gap: 14px;
+}
+
+.row>* {
+    flex-grow: 1;
+}

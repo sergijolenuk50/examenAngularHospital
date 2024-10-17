@@ -1,0 +1,73 @@
+<!-- <h1>Create New Doctor</h1> -->
+<h1>{{editMode ? "Edit" : "Create New"}} Doctor </h1>
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+    <mat-form-field>
+        <mat-label>lastName</mat-label>
+        <input matInput formControlName="lastName">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+    </mat-form-field>
+
+    
+      <mat-form-field>
+          <mat-label>firstName</mat-label>
+          <input matInput formControlName="firstName">
+      </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>image Url</mat-label>
+            <input matInput formControlName="imageUrl">
+        </mat-form-field>
+
+        <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="categoryId">
+            <!-- <mat-option value="1">Electronics</mat-option>
+            <mat-option value="2">Sport</mat-option> -->
+            @for (i of categories; track i.id) {
+                <mat-option value="{{i.id}}">{{i.name}}</mat-option>
+                }
+        </mat-select>
+    </mat-form-field>
+
+
+    <div class="row">
+
+        <mat-form-field floatLabel="always">
+            <mat-label>birthday</mat-label>
+            <input formControlName="birthday" matInput type="date" placeholder="0" />
+            <!-- <span matTextPrefix>$&nbsp;</span>
+            <span matTextSuffix>.00</span> -->
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always">
+            <mat-label>work_experience</mat-label>
+            <input formControlName="work_experience" matInput type="number" placeholder="0" />
+        </mat-form-field>
+
+        <mat-label>archived</mat-label>
+        <!-- <mat-select>
+        </mat-select> -->
+            <section class="example-section">
+                <!-- <mat-checkbox class="example-margin">Check me!</mat-checkbox> -->
+                <mat-checkbox class="example-margin" formControlName="archived" [disabled]="true">Disabled</mat-checkbox>
+              </section>
+            <!-- <mat-option value="1">true</mat-option>
+            <mat-option value="2">false</mat-option> -->
+    </div>
+
+    <div class="row">
+        <!-- type="button" (click)="back()" -->
+        <button type="button" (click)="back()"  mat-raised-button>
+            <mat-icon>arrow_back</mat-icon>Back
+        </button>
+        <button type="submit" mat-raised-button>
+            <mat-icon>{{editMode ? "edit" : "add"}}</mat-icon>{{editMode ? "edit" : "add"}}
+            <!-- <mat-icon>add</mat-icon>Create -->
+        </button>
+    </div>
+</form>
